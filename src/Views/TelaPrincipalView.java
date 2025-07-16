@@ -12,6 +12,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         initComponents();
         configurarComponentes();
         setLocationRelativeTo(null);
+//        teste
     }
 
     @SuppressWarnings("unchecked")
