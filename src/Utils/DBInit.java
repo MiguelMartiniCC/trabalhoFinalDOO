@@ -62,14 +62,14 @@ public class DBInit {
                         FOREIGN KEY (categoria_id) REFERENCES TBCategorias(id) ON DELETE CASCADE
                         );
                         """;
-
                 String sqlUsuarioAdmin = """
                         INSERT INTO TBUsuarios (nome, senha, perfil)
                         SELECT 'admin', '12345', 'ADMIN'
                         WHERE NOT EXISTS (
-                                 SELECT 1 FROM TBUsuarios WHERE nome = 'admin'
+                            SELECT 1 FROM TBUsuarios WHERE nome = 'admin'
                         );
                         """;
+
                 stmt.executeUpdate(sqlCriarTabelaUsuario);
                 System.out.println("Tabela 'Usuarios' verificada/criada com sucesso.");
 
@@ -81,9 +81,9 @@ public class DBInit {
 
                 stmt.executeUpdate(sqlCriarTabelaContasCategorias);
                 System.out.println("Tabela 'Contas_Categorias' verificada/criada com sucesso.");
-
+                
                 stmt.executeUpdate(sqlUsuarioAdmin);
-                System.out.println("Usuário 'admin' verificado/criado com sucesso.");
+                System.out.println("Usuário padrão verificado/criado com sucesso.");
             }
         } catch (SQLException e) {
             System.err.println("Erro ao criar/verificar banco e tabelas:");
